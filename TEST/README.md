@@ -1,4 +1,4 @@
-# Soy secci¢n de pruebas
+# Soy secciÃ³n de pruebas
 
-En esta secci¢n es para hacer pruebas diversas, como ejecuci¢n de 
-scripts, pruebas de dise¤o etc
+En esta secciÃ³n es para hacer pruebas diversas, como ejecuciÃ³n de 
+scripts, pruebas de diseÃ±o etc
