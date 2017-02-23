@@ -1,15 +1,16 @@
 var borrameX = 0;
-var tiempo;
 
-const Main = (function() {
+// >> Funcion MAIN
+(function() {
+    // >> Constantes
     const canvas = document.getElementById("pacman");
+    const ctx = canvas.getContext("2d");
     const cWidth = canvas.width;
     const cHeight = canvas.height;
-    console.log(cWidth);
-    const ctx = canvas.getContext("2d");
-    
+
+    // >> Nuestro GameLoop
     const _gameLoop = function() {
-        // Limpia nuestro canvas
+        // >> Limpia nuestro canvas
         ctx.clearRect(0, 0, cWidth, cHeight);
         // >> Acá irá la lógica del juego
 
@@ -27,10 +28,9 @@ const Main = (function() {
         borrameX++;
 
         // >> el requestAnimation tiene que ir al final
-        tiempo = requestAnimationFrame(_gameLoop);
+        requestAnimationFrame(_gameLoop);
     }
     // carga el gameloop
     _gameLoop();
-
 })();
 

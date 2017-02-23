@@ -1,8 +1,20 @@
+@font-face {
+    font-family: 'atari';
+    src: url('../assets/Fonts/atari.ttf');
+}
 body {
     display: flex;
     flex-direction: column;
     align-items: center
 
+}
+h1 {
+    font-family: 'atari';
+    color: #f0f523;
+    border-radius: 10px;
+    border: 4px solid #d35400;
+    background-color: #e67e22;
+    padding: 15px;
 }
 canvas#pacman {
     border: 1px solid black;
