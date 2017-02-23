@@ -14,15 +14,17 @@ const Main = (function() {
         // >> Acá irá la lógica del juego
 
         ctx.fillStyle = "pink";
-        ctx.fillRect(10,borrameX++,20,20);
+        ctx.fillRect(10,borrameX,20,20);
         ctx.fillStyle = "#3498db";        
-        ctx.fillRect(60,borrameX++,20,20);
+        ctx.fillRect(60,borrameX,20,20);
         ctx.fillStyle = "red";        
-        ctx.fillRect(100,borrameX++,20,20);
+        ctx.fillRect(100,borrameX,20,20);
         ctx.fillStyle = "orange";
-        ctx.fillRect(130,borrameX++,20,20);
+        ctx.fillRect(130,borrameX,20,20);
         ctx.fillStyle = "#f1c40f";
-        ctx.fillRect(170,borrameX++,40,40);
+        ctx.fillRect(170,borrameX,40,40);
+
+        borrameX++;
 
         // >> el requestAnimation tiene que ir al final
         tiempo = requestAnimationFrame(_gameLoop);
