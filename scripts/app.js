@@ -10,7 +10,7 @@ var iniciar = function() {
 
     const spritesFondo = new Image();
           spritesFondo.src = sprites.url.mapa; 
-    var obj = sprites[33];
+    var obj = sprites[1];
     // >> Nuestro GameLoop
     const _gameLoop = function() {        
         // >> Limpia nuestro canvas
@@ -19,7 +19,7 @@ var iniciar = function() {
          // >> Acá irá la lógica del juego
                 //   (objeto imagen, offsetX, offsetY, tamX, tamY, posX, posY, zoomX, zoomY )
         ctx.drawImage(spritesFondo, obj.offsetX, obj.offsetY, sprites.config.width, sprites.config.width, 0, 0, sprites.config.zoom, sprites.config.zoom);
-        // ctx.drawImage(spritesFondo, sprites[8].offsetX, sprites[8].offsetY, sprites.config.width, sprites.config.width, 0, 16, sprites.config.zoom, sprites.config.zoom);
+        ctx.drawImage(spritesFondo, sprites[7].offsetX, sprites[7].offsetY, sprites.config.width, sprites.config.width, 0, 16, sprites.config.zoom, sprites.config.zoom);
 
         // ctx.drawImage(spritesFondo, 60, 60, 300, 300);
 
