@@ -1,7 +1,7 @@
 var borrameX = 0;
 
 // >> Funcion MAIN
-var iniciar = function() {
+var iniciar = (function() {
     // >> Constantes
     const canvas = document.getElementById("pacman");
     const ctx = canvas.getContext("2d");
@@ -10,25 +10,23 @@ var iniciar = function() {
 
     const spritesFondo = new Image();
           spritesFondo.src = sprites.url.mapa; 
-    var obj = sprites[1];
-    // >> Nuestro GameLoop
+    
+    // la variable mapa viene dada en ./scripts/mapa/mapa.js
+    const Mapa = new Pintar(ctx, spritesFondo, mapa);
+ 
+
+ 
+    // // >> Nuestro GameLoop
     const _gameLoop = function() {        
         // >> Limpia nuestro canvas
         ctx.clearRect(0, 0, cWidth, cHeight);
+        // >> Acá irá la lógica del juego
+        Mapa.pintar();
 
-         // >> Acá irá la lógica del juego
-                //   (objeto imagen, offsetX, offsetY, tamX, tamY, posX, posY, zoomX, zoomY )
-        ctx.drawImage(spritesFondo, obj.offsetX, obj.offsetY, sprites.config.width, sprites.config.width, 0, 0, sprites.config.zoom, sprites.config.zoom);
-        ctx.drawImage(spritesFondo, sprites[7].offsetX, sprites[7].offsetY, sprites.config.width, sprites.config.width, 0, 16, sprites.config.zoom, sprites.config.zoom);
-
-        // ctx.drawImage(spritesFondo, 60, 60, 300, 300);
-
-        borrameX++;
         // >> el requestAnimation tiene que ir al final
         requestAnimationFrame(_gameLoop);
     }
     // carga el gameloop
     _gameLoop();
-};
-
-window.addEventListener("load", iniciar, false);
+    
+})();
