@@ -150,5 +150,13 @@ const sprites = {
     33: {
         'offsetX': 6+(23*2),
         'offsetY': 6+(23*5)
-    }
+    },
+    34: {
+        'offsetX': 6+(23*3),
+        'offsetY': 6+(23*5)
+    },
+    35: {
+        'offsetX': 6+(23*4),
+        'offsetY': 6+(23*5)
+    },
 };

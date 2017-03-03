@@ -1,7 +1,7 @@
 var borrameX = 0;
 
 // >> Funcion MAIN
-var iniciar = (function() {
+(function() {
     // >> Constantes
     const canvas = document.getElementById("pacman");
     const ctx = canvas.getContext("2d");
