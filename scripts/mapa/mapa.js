@@ -15,3 +15,12 @@ for(let y = 0; y < tiledMap.height; y++) {
         mapa[y][x] = tiledMap.data[(tiledMap.width*y)+x];
     }  
 }
+
+// var salida = '';
+// for(var y = 0; y < mapa.length; y++) {
+//     salida += "\n";
+//     for(var x = 0; x < mapa[y].length; x++) {
+//         salida += mapa[y][x] + ' - ';
+//     }
+// }
+// console.log(salida);
