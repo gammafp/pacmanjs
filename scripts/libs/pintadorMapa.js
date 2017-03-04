@@ -13,7 +13,6 @@ var Pintar = function(ctx, imagen, objeto) {
                 if(objeto[y][x] == 37 || objeto[y][x] == 38 || objeto[y][x] == 39) {
                     if(animacionItem == 20) {
                         objeto[y][x] = objeto[y][x] + 1;
-                        console.log(objeto[y][x]);
                     } else if(animacionItem > 20) {
                         animacionItem = 0;
                     }

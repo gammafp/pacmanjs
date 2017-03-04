@@ -1,12 +1,14 @@
 const sprites = {
     'url': {
         'mapa' : './assets/Sprites/escenario.png',
-        'items' : './assets/Sprites/items.png'
+        'items' : './assets/Sprites/items.png',
+        'player_pacman' : './assets/Sprites/pacman.png'
     },
     'config' : {
         'width'  : 16,
         'height' : 16,
-        'zoom': 16
+        'zoom': 16,
+        'velocidadPacman': 2 // Velocidad normal de pacman
     },
     // -> primera fila 1 - 6 
     1: {

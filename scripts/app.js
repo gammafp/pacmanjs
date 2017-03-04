@@ -1,36 +1,51 @@
 // >> Funcion MAIN
 (function() {
     console.log("Juego cargado...");
-    // >> Constantes
+
+    /* ##############################
+         Constantes del canva */
     const canvas = document.getElementById("pacman");
     const ctx = canvas.getContext("2d");
-
     const cWidth = canvas.width;
     const cHeight = canvas.height;
 
+    // Sprites
     const spritesFondo = new Image();
     const items = new Image();
+    const imagenPacman = new Image();
 
-    
+    // Cargas de las rutas de los sprites
     spritesFondo.src = sprites.url.mapa; 
     items.src = sprites.url.items;
+    imagenPacman.src = sprites.url.player_pacman;
+
+
+    /* #############################
+        Objetos / personajes */
 
     // la variable mapa viene dada en ./scripts/mapa/mapa.js
     const Mapa = new Pintar(ctx, [spritesFondo, items], mapa);
- 
 
-    // // >> Nuestro GameLoop
+    // clase que viene desde la ruta: ./scripts/actores/actores.js
+    const pacman = new Pacman(imagenPacman, ctx);     
+
+    /* ###############################
+        Nuestro GAMELOOP */
     const _gameLoop = function() {      
-        // >> Limpia nuestro canvas
+        // limpiador del canvas
         ctx.clearRect(0, 0, cWidth, cHeight);
-        
-        // >> Acá irá la lógica del juego
+    
+        // Lógica del juego (update)
         Mapa.pintar();
+        pacman.dibujaPacman();
+        // Interfaz de movimiento de pacman
+        pacman.mover(2);
 
-        // >> el requestAnimation tiene que ir al final
+        // el requestAnimation tiene que ir al final
         requestAnimationFrame(_gameLoop);
     }
-    // carga el gameloop
+
+    // Carga inicial del Game Loop
     _gameLoop();
     
 })();
