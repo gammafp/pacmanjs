@@ -38,13 +38,14 @@
         // Lógica del juego (update)
         Mapa.pintar();
         pacman.dibujaPacman();
+        
         // Interfaz de movimiento de pacman
-        pacman.mover(2);
+        pacman.mover(3);
 
         // el requestAnimation tiene que ir al final
         requestAnimationFrame(_gameLoop);
     }
-
+    
     // Carga inicial del Game Loop
     _gameLoop();
     
