@@ -1,6 +1,7 @@
 const sprites = {
     'url': {
-        'mapa' : './assets/Sprites/escenario.png'
+        'mapa' : './assets/Sprites/escenario.png',
+        'items' : './assets/Sprites/items.png'
     },
     'config' : {
         'width'  : 16,
@@ -159,4 +160,24 @@ const sprites = {
         'offsetX': 6+(23*4),
         'offsetY': 6+(23*5)
     },
+    // el indice 36 está libre
+    // Tiled de items
+    37: {
+        'offsetX': 6,
+        'offsetY': 6
+    },
+    38: {
+        'offsetX': 6+23,
+        'offsetY': 6
+    },
+    39: {
+        'offsetX': 6+23*2,
+        'offsetY': 6
+    },
+
+    // Indice 38, 39 son efectos del 37 que es el item de poder. El 40 es el el item de puntos 
+    40: {
+        'offsetX': 6+(23*3),
+        'offsetY': 6
+    }
 };
