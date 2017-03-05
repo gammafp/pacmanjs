@@ -40,7 +40,7 @@
         pacman.dibujaPacman();
         
         // Interfaz de movimiento de pacman
-        // pacman.mover(3);
+        pacman.mover(3);
 
         // el requestAnimation tiene que ir al final
         requestAnimationFrame(_gameLoop);

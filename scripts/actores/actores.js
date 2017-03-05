@@ -5,8 +5,8 @@
  */
 // La clase para los fantasmas tienen que heredar de pacman // Gamma del futuro encargate de eso: XD
 function Pacman(pac, ctx) {
-    this.x = 185;       // Eje x posicion 210
-    this.y = 360;       // Eje y posicionn361
+    this.x = 208;       // Eje x posicion 210 || 185
+    this.y = 360;       // Eje y posicionn360 || 360
     this.speed = sprites.config.velocidadPacman; // la velocidad normal de pacman 
     // this.speed = 0.5;
     // direcciones
@@ -30,7 +30,9 @@ function Pacman(pac, ctx) {
 
 // ## Método para el movimiento ##
     this.mover = function(pos) {
-        let posicionActualX = (this.x/16);
+
+        console.log("posicionA");
+
         switch(pos) {
             case izquierda: 
                 this.x -= this.speed;
@@ -44,14 +46,6 @@ function Pacman(pac, ctx) {
             case abajo: 
                 this.y += this.speed;
             break;
-        }
-
-        // Salto entre portales
-        if(posicionActualX < 0 && pos == izquierda) {
-            this.x = 16*28;
-        }
-        if(posicionActualX > 28 && pos == derecha) {
-            this.x = -16;
         }
 
     }    
