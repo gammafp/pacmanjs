@@ -1,8 +1,11 @@
+const debug = true;
+const ruta = (debug) ? 'debugSprites' : 'Sprites';
+
 const sprites = {
     'url': {
-        'mapa' : './assets/Sprites/escenario.png',
-        'items' : './assets/Sprites/items.png',
-        'player_pacman' : './assets/Sprites/pacman.png'
+        'mapa' : 'assets/'+ruta+'/escenario.png',
+        'items' : './assets/'+ruta+'/items.png',
+        'player_pacman' : './assets/'+ruta+'/pacman.png'
     },
     'config' : {
         'width'  : 16,
