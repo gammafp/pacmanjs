@@ -52,9 +52,11 @@
         // Lógica del juego (update)
         Mapa.pintar();
         pacman.dibujaPacman();
-        
+        // console.log(ColisionesPared(pacman.x, pacman.y, direccion, pacman.ultimaDireccion));
+        pacman.ultimaDireccion = ColisionesPared(pacman.x, pacman.y, direccion, pacman.ultimaDireccion);
         // Interfaz de movimiento de pacman
-        pacman.mover(direccion);
+        pacman.mover(pacman.ultimaDireccion);
+       
 
         // el requestAnimation tiene que ir al final
         requestAnimationFrame(_gameLoop);
