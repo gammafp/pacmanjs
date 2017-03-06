@@ -4,6 +4,7 @@
 
     /* ##############################
          Constantes del canva */
+    let bucleAnimation;
     const canvas = document.getElementById("pacman");
     const ctx = canvas.getContext("2d");
     const cWidth = canvas.width;
@@ -54,12 +55,13 @@
         pacman.dibujaPacman();
         // console.log(ColisionesPared(pacman.x, pacman.y, direccion, pacman.ultimaDireccion));
         pacman.ultimaDireccion = ColisionesPared(pacman.x, pacman.y, direccion, pacman.ultimaDireccion);
+        
         // Interfaz de movimiento de pacman
         pacman.mover(pacman.ultimaDireccion);
        
 
         // el requestAnimation tiene que ir al final
-        requestAnimationFrame(_gameLoop);
+         bucleAnimation = requestAnimationFrame(_gameLoop);
     }
     
     // Carga inicial del Game Loop
