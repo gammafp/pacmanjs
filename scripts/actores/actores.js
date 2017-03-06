@@ -8,12 +8,13 @@ function Pacman(pac, ctx) {
     this.x = 184;       // Eje x posicion 210 || 185
     this.y = 360;       // Eje y posicionn360 || 360
     // this.speed = sprites.config.velocidadPacman; // la velocidad normal de pacman 
-    this.speed = 0.5;
+    this.speed = 1;
     // direcciones
     let izquierda = 1;
     let arriba = 2;
     let derecha = 3;
     let abajo = 4;
+    let ultimaDireccion = 1;
 
 // TODO: HACER EL METODO DE COLISIONES :/
 // ## Método para el dibujado y animacion ##
@@ -40,13 +41,13 @@ function Pacman(pac, ctx) {
         // Direcciones.
         switch(pos) {
             case izquierda: 
-                verticeA = [~~((this.x + 8)/16),  ~~((this.y + 31-8)/16)];
-                verticeB = [~~((this.x + 8)/16),  ~~((this.y + 8)/16)];
+                verticeA = [~~((this.x + 7)/16),  ~~((this.y + 31-8)/16)];
+                verticeB = [~~((this.x + 7)/16),  ~~((this.y + 8)/16)];
                 this.x -= ( colisiona(verticeA, verticeB) === 10 ) ? 0 : this.speed;
             break;
             case arriba:
-                verticeB = [~~((this.x + 8)/16),  ~~((this.y + 8)/16)];
-                verticeC = [~~((this.x+31-8)/16), ~~((this.y + 8)/16)];
+                verticeB = [~~((this.x + 8)/16),  ~~((this.y + 7)/16)];
+                verticeC = [~~((this.x+31-8)/16), ~~((this.y + 7)/16)];
                 this.y -= ( colisiona(verticeB, verticeC) === 10 ) ? 0 : this.speed;
             break;
             case derecha:
@@ -55,8 +56,8 @@ function Pacman(pac, ctx) {
                 this.x += ( colisiona(verticeC, verticeD) === 10 ) ? 0 : this.speed;
             break;
             case abajo: 
-                verticeA = [~~((this.x + 8)/16),  ~~((this.y + 31-8)/16)];
-                verticeD = [~~((this.x+32-8)/16), ~~((this.y + 32-8)/16)];
+                verticeA = [~~((this.x + 8)/16),  ~~((this.y + 32-8)/16)];
+                verticeD = [~~((this.x + 31-8)/16), ~~((this.y + 32-8)/16)];
                 this.y += ( colisiona(verticeA, verticeD) === 10 ) ? 0 : this.speed;
             break;
         }

@@ -8,6 +8,8 @@
     const ctx = canvas.getContext("2d");
     const cWidth = canvas.width;
     const cHeight = canvas.height;
+    // let colision = new Colisiones();
+    let direccion = 1;
 
     // Sprites
     const spritesFondo = new Image();
@@ -19,7 +21,6 @@
     items.src = sprites.url.items;
     imagenPacman.src = sprites.url.player_pacman;
 
-
     /* #############################
         Objetos / personajes */
 
@@ -28,6 +29,19 @@
 
     // clase que viene desde la ruta: ./scripts/actores/actores.js
     const pacman = new Pacman(imagenPacman, ctx);     
+
+
+    /* ###############################
+        Mandos */
+    window.addEventListener('keydown', (e) => {
+        let codigos = e.keyCode;
+        if(codigos >= 37 && codigos <= 40) {
+           e.preventDefault();   
+           direccion = (codigos%4 === 0) ? 4 : codigos%4;
+        }
+    }, false);
+
+
 
     /* ###############################
         Nuestro GAMELOOP */
@@ -40,7 +54,7 @@
         pacman.dibujaPacman();
         
         // Interfaz de movimiento de pacman
-        pacman.mover(1);
+        pacman.mover(direccion);
 
         // el requestAnimation tiene que ir al final
         requestAnimationFrame(_gameLoop);
