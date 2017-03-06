@@ -1,0 +1,1 @@
+alert("mandos cargados y preparados");
