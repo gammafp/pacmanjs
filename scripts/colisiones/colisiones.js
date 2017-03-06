@@ -12,7 +12,6 @@ let ColisionesPared = function(x, y, nuevaPos, ultimaPos) {
                 verticeA = [~~((this.x + 7)/16),  ~~((this.y + 31-8)/16)];
                 verticeB = [~~((this.x + 7)/16),  ~~((this.y + 8)/16)];
                 if( colisiona(verticeA, verticeB) === 10 ) {
-                
                     salida = (ultimaPos === nuevaPos) ? 0 : ultimaPos;
                   
                 } else {
