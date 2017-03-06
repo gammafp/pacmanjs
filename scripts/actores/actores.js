@@ -35,15 +35,21 @@ function Pacman(pac, ctx) {
         // Formula floor(posicion/tamañoBaldosa)
         // Baldosas de 32 colisiones central 16 pixeles
         // Direcciones.
-        console.log(pos);
+       
         switch(pos) {
             case izquierda: 
+                if(this.x < -16 ) {
+                    this.x = (16*28)+16;
+                }
                 this.x -= this.speed;
             break;
             case arriba:
                 this.y -= this.speed;
             break;
             case derecha:
+                if(this.x > (16*28) + 16 ) {
+                    this.x = -16;
+                }
                 this.x += this.speed;
             break;
             case abajo: 

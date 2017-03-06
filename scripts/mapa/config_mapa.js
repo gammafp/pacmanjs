@@ -11,7 +11,7 @@ const sprites = {
         'width'  : 16,
         'height' : 16,
         'zoom': 16,
-        'velocidadPacman': 2 // Velocidad normal de pacman
+        'velocidadPacman': 3// Velocidad normal de pacman
     },
     // -> primera fila 1 - 6 
     1: {
