@@ -16,14 +16,29 @@ function Pacman(pac, ctx) {
     let abajo = 4;
     let detener = 0;
     let ultimaDireccion = 0;
-
+    this.sprites = 2;
+    this.frameActual = 0;
+    contadorFrames = 0;
 // TODO: HACER EL METODO DE COLISIONES :/
 // ## Método para el dibujado y animacion ##
     this.dibujaPacman = function() {
         // Pintar pacman      
-        // TODO: HACER LAS ANIMACIONES SEGUN DONDE VAYA EL PACMAN
+        // TODO: HACER LAS ANIMACIONES SEGUN DONDE VAYA EL 
+        if(this.frameActual >= this.sprites) {
+            this.frameActual = 0;
+        } else {
+            if(contadorFrames === 5) {
+                this.frameActual++;
+            }
+            else if(contadorFrames > 5) {
+                contadorFrames = 0;    
+            }
+            contadorFrames++;
+        }
+
+
         ctx.drawImage(pac, // Se carga el objeto de imagen
-                    0, 0,    // posición en el spriteSheet offSetX offSetY
+                    32 * this.frameActual, 0,    // posición en el spriteSheet offSetX offSetY
                     32, 32,   // Tamaño de la imagen width, height
                     this.x, this.y, // Posicion en el lienzo
                     32, 32    // Incremento X, Y 
