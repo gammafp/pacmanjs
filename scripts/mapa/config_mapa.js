@@ -167,6 +167,7 @@ const sprites = {
     },
     // el indice 36 está libre
     // Tiled de items
+    //  Indice 38, 39 son efectos del 37 que es el item de poder.
     37: {
         'offsetX': 6,
         'offsetY': 6
@@ -180,7 +181,7 @@ const sprites = {
         'offsetY': 6
     },
 
-    // Indice 38, 39 son efectos del 37 que es el item de poder. El 40 es el el item de puntos 
+    // El 40 es el el item de puntos 
     40: {
         'offsetX': 6+(23*3),
         'offsetY': 6

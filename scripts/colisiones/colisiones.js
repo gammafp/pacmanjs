@@ -69,6 +69,16 @@ function colisiona(puntoA, puntoB) {
     let puntA = mapa[puntoA[1]][puntoA[0]];
     let puntB = mapa[puntoB[1]][puntoB[0]];
 
+    // Sumar el comer puntos
+    if(puntA == 40) {
+        mapa[puntoA[1]][puntoA[0]] = 0;
+        puntuacion++;
+    }
+    // El PODERRRRR!!!!
+    if((puntA > 36 && puntA <= 39)) {
+        mapa[puntoA[1]][puntoA[0]] = 0;
+    }
+
     if( (puntA > 0 && puntA < 36) || (puntB > 0 && puntB < 36) ) {
         salida = 10;
     }

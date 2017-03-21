@@ -17,31 +17,34 @@ function Pacman(pac, ctx) {
     let detener = 0;
     let ultimaDireccion = 0;
     this.sprites = 2;
-    this.frameActual = 0;
+    this.frameActualX = 0;
+    this.frameActualY = 0;
+    this.animar = true;
     contadorFrames = 0;
 // TODO: HACER EL METODO DE COLISIONES :/
 // ## Método para el dibujado y animacion ##
     this.dibujaPacman = function() {
-        // Pintar pacman      
-        // TODO: HACER LAS ANIMACIONES SEGUN DONDE VAYA EL 
-        if(this.frameActual >= this.sprites) {
-            this.frameActual = 0;
-        } else {
-            if(contadorFrames === 5) {
-                this.frameActual++;
+        // Pintar pacman   
+        if(this.animar) {   
+            if(this.frameActualX >= this.sprites) {
+                this.frameActualX = 0;
+            } else {
+                if(contadorFrames === 5) {
+                    this.frameActualX++;
+                }
+                else if(contadorFrames > 5) {
+                    contadorFrames = 0;    
+                }
+                contadorFrames++;
             }
-            else if(contadorFrames > 5) {
-                contadorFrames = 0;    
-            }
-            contadorFrames++;
         }
 
 
-        ctx.drawImage(pac, // Se carga el objeto de imagen
-                    32 * this.frameActual, 0,    // posición en el spriteSheet offSetX offSetY
-                    32, 32,   // Tamaño de la imagen width, height
-                    this.x, this.y, // Posicion en el lienzo
-                    32, 32    // Incremento X, Y 
+        ctx.drawImage(pac,                                              // Se carga el objeto de imagen
+                    32 * this.frameActualX, 32 * this.frameActualY,    // posición en el spriteSheet offSetX offSetY
+                    32, 32,                                           // Tamaño de la imagen width, height
+                    this.x, this.y,                                  // Posicion en el lienzo
+                    32, 32                                          // Incremento X, Y 
         );
     }    
 
@@ -57,6 +60,7 @@ function Pacman(pac, ctx) {
         let verticeD = [];
         switch(pos) {
             case izquierda: 
+                // Teletransporte por el portal
                 if(this.x < -16 ) {
                     this.x = (16*28)+16;
                 }
@@ -65,8 +69,11 @@ function Pacman(pac, ctx) {
                 verticeB = [~~((this.x + 7)/16),  ~~((this.y + 8)/16)];
                 if( colisiona(verticeA, verticeB) === 10 ) {
                     this.x -= 0;
+                    this.animar = false;
                 } else {
                     this.x -= this.speed;
+                    this.frameActualY = 0;
+                    this.animar = true;
                 }
 
             break;
@@ -76,12 +83,16 @@ function Pacman(pac, ctx) {
 
                if( colisiona(verticeB, verticeC) === 10 ) {
                     this.y -= 0;
+                    this.animar = false;
                 } else {
                     this.y -= this.speed;
+                    this.frameActualY = 2;
+                    this.animar = true;
                 }
 
             break;
             case derecha:
+                // Teletransporte por el portal
                 if(this.x > (16*28) + 16 ) {
                     this.x = -16;
                 }
@@ -92,10 +103,12 @@ function Pacman(pac, ctx) {
          
                 if( colisiona(verticeC, verticeD) === 10 ) {
                     this.x += 0;
+                    this.animar = false;
                 } else {
                     this.x += this.speed;
+                    this.frameActualY = 1;
+                    this.animar = true;
                 }
-    
             break;
             case abajo: 
 
@@ -104,14 +117,18 @@ function Pacman(pac, ctx) {
               
                 if( colisiona(verticeA, verticeD) === 10 ) {
                     this.y += 0;
+                    this.animar = false;
                 } else {
                     this.y += this.speed;
+                    this.frameActualY = 3;
+                    this.animar = true;
                 }
 
             break;
             case detener: 
                 this.x += 0;
                 this.y += 0;
+                this.animar = false;
         }
         
     }    

@@ -4,13 +4,16 @@
  * @param {Objeto} imagen Es el objeto de imagen que se ha creado anteriormente
  * @param {Array} objeto Es el array map
  */
-let animacionItem = 0;
+let animacionItem = 1;
+
 var Pintar = function(ctx, imagen, objeto) {
     this.pintar = function() {
         for(let y = 0; y < objeto.length; y++) {
             for(let x = 0; x < objeto[y].length; x++) {
                 // Si es distinto a cero lo pintas majo :)
                 if(objeto[y][x] == 37 || objeto[y][x] == 38 || objeto[y][x] == 39) {
+                    
+
                     if(animacionItem == 20) {
                         objeto[y][x] = objeto[y][x] + 1;
                     } else if(animacionItem > 20) {
@@ -20,6 +23,7 @@ var Pintar = function(ctx, imagen, objeto) {
                     if(objeto[y][x] > 39) {
                          objeto[y][x] = 37;
                     }
+
                     animacionItem++;
                 }
                 if(!!objeto[y][x]) {

@@ -1,3 +1,6 @@
+// var stats = new Stats(false);
+// document.body.appendChild(stats.domElement);
+var puntuacion = 0;
 // >> Funcion MAIN
 (function() {
     console.log("Juego cargado...");
@@ -7,6 +10,8 @@
     let bucleAnimation;
     const canvas = document.getElementById("pacman");
     const ctx = canvas.getContext("2d");
+    // ctx.imageSmoothingEnable = false; 
+    // ctx.scale(window.devicePixelRatio, window.devicePixelRatio);   
     const cWidth = canvas.width;
     const cHeight = canvas.height;
     // let colision = new Colisiones();
@@ -46,7 +51,8 @@
 
     /* ###############################
         Nuestro GAMELOOP */
-    const _gameLoop = function() {      
+    const _gameLoop = function() {  
+        // stats.begin();    
         // limpiador del canvas
         ctx.clearRect(0, 0, cWidth, cHeight);
     
@@ -58,10 +64,10 @@
         
         // Interfaz de movimiento de pacman
         pacman.mover(pacman.ultimaDireccion);
-       
-
+        console.log(puntuacion);
+        // stats.end();
         // el requestAnimation tiene que ir al final
-         bucleAnimation = requestAnimationFrame(_gameLoop);
+        bucleAnimation = requestAnimationFrame(_gameLoop);
     }
     
     // Carga inicial del Game Loop
