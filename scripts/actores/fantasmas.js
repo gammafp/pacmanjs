@@ -4,47 +4,49 @@
  * @param {Object} ctx Contexto del canvas
  */
 // La clase para los fantasmas tienen que heredar de pacman // Gamma del futuro encargate de eso: XD
-function Pacman(pac, ctx) {
-    this.x = 208;       // Eje x posicion 208 || 185
-    this.y = 360;       // Eje y posicionn360 || 360
+function Fantasmas(fant, ctx, tipo) {
+    switch(tipo) {
+        case "blinky": 
+            this.x = 209;
+            this.y = 168;
+            this.spriteX = 3;
+            this.spriteY = 3;
+        break;
+        case "inky":
+            this.x = 190;
+            this.y = 218;
+            this.spriteX = 0;
+            this.spriteY = 0;
+        break;
+        case "pinky": 
+            this.x = 210;
+            this.y = 218;
+            this.spriteX = 0;
+            this.spriteY = 2;
+        break;
+        case "clyde": 
+            this.x = 230;
+            this.y = 218;
+            this.spriteX = 0;
+            this.spriteY = 1;
+        break;
+    }
+   
     this.speed = sprites.config.velocidadPacman; // la velocidad normal de pacman 
-    // this.speed = 1;
-    // direcciones
     let izquierda = 1;
     let arriba = 2;
     let derecha = 3;
     let abajo = 4;
     let detener = 0;
     this.ultimaDireccion = 0;
-    this.sprites = 2;
-    this.frameActualX = 0;
-    this.frameActualY = 0;
-    this.animar = true;
-    contadorFrames = 0;
-// TODO: HACER EL METODO DE COLISIONES :/
+
 // ## Método para el dibujado y animacion ##
-    this.dibujaPacman = function() {
-        // Pintar pacman   
-        if(this.animar) {   
-            if(this.frameActualX >= this.sprites) {
-                this.frameActualX = 0;
-            } else {
-                if(contadorFrames === 5) {
-                    this.frameActualX++;
-                }
-                else if(contadorFrames > 5) {
-                    contadorFrames = 0;    
-                }
-                contadorFrames++;
-            }
-        }
-
-
-        ctx.drawImage(pac,                                              // Se carga el objeto de imagen
-                    32 * this.frameActualX, 32 * this.frameActualY,    // posición en el spriteSheet offSetX offSetY
-                    32, 32,                                           // Tamaño de la imagen width, height
-                    this.x, this.y,                                  // Posicion en el lienzo
-                    32, 32                                          // Incremento X, Y 
+    this.dibujaFantasma = function() {
+        ctx.drawImage(fant,                                              // Se carga el objeto de imagen
+                    32 * this.spriteX, 32 * this.spriteY,           // posición en el spriteSheet offSetX offSetY
+                    32, 32,         // Tamaño de la imagen width, height
+                    this.x, this.y, // Posicion en el lienzo
+                    32, 32          // Incremento X, Y 
         );
     }    
 
@@ -58,6 +60,7 @@ function Pacman(pac, ctx) {
         let verticeB = [];
         let verticeC = [];
         let verticeD = [];
+        console.log(pos);
         switch(pos) {
             case izquierda: 
                 // Teletransporte por el portal
@@ -67,13 +70,12 @@ function Pacman(pac, ctx) {
 
                 verticeA = [~~((this.x + 7)/16),  ~~((this.y + 31-8)/16)];
                 verticeB = [~~((this.x + 7)/16),  ~~((this.y + 8)/16)];
+
                 if( colisiona(verticeA, verticeB) === 10 ) {
                     this.x -= 0;
-                    this.animar = false;
                 } else {
+                    console.log("Entra");
                     this.x -= this.speed;
-                    this.frameActualY = 0;
-                    this.animar = true;
                 }
 
             break;
@@ -83,11 +85,8 @@ function Pacman(pac, ctx) {
 
                if( colisiona(verticeB, verticeC) === 10 ) {
                     this.y -= 0;
-                    this.animar = false;
                 } else {
                     this.y -= this.speed;
-                    this.frameActualY = 2;
-                    this.animar = true;
                 }
 
             break;
@@ -103,11 +102,8 @@ function Pacman(pac, ctx) {
          
                 if( colisiona(verticeC, verticeD) === 10 ) {
                     this.x += 0;
-                    this.animar = false;
                 } else {
                     this.x += this.speed;
-                    this.frameActualY = 1;
-                    this.animar = true;
                 }
             break;
             case abajo: 
@@ -117,18 +113,16 @@ function Pacman(pac, ctx) {
               
                 if( colisiona(verticeA, verticeD) === 10 ) {
                     this.y += 0;
-                    this.animar = false;
+               
                 } else {
                     this.y += this.speed;
-                    this.frameActualY = 3;
-                    this.animar = true;
+        
                 }
 
             break;
             case detener: 
                 this.x += 0;
                 this.y += 0;
-                this.animar = false;
         }
         
     }    

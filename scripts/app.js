@@ -21,11 +21,13 @@ var puntuacion = 0;
     const spritesFondo = new Image();
     const items = new Image();
     const imagenPacman = new Image();
+    const fantasmasSprites = new Image();
 
     // Cargas de las rutas de los sprites
     spritesFondo.src = sprites.url.mapa; 
     items.src = sprites.url.items;
     imagenPacman.src = sprites.url.player_pacman;
+    fantasmasSprites.src = sprites.url.fantasmas;
 
     /* #############################
         Objetos / personajes */
@@ -34,9 +36,11 @@ var puntuacion = 0;
     const Mapa = new Pintar(ctx, [spritesFondo, items], mapa);
 
     // clase que viene desde la ruta: ./scripts/actores/actores.js
-    const pacman = new Pacman(imagenPacman, ctx);     
-
-
+    const pacman = new Pacman(imagenPacman, ctx); 
+    const blinky = new Fantasmas(fantasmasSprites, ctx, "blinky"); 
+    const inky = new Fantasmas(fantasmasSprites, ctx, "inky");   
+    const pinky = new Fantasmas(fantasmasSprites, ctx, "pinky");
+    const clyde = new Fantasmas(fantasmasSprites, ctx, "clyde");
     /* ###############################
         Mandos */
     window.addEventListener('keydown', (e) => {
@@ -59,12 +63,23 @@ var puntuacion = 0;
         // Lógica del juego (update)
         Mapa.pintar();
         pacman.dibujaPacman();
+
+        // Fantasmas
+        blinky.dibujaFantasma();
+        inky.dibujaFantasma();
+        pinky.dibujaFantasma();
+        clyde.dibujaFantasma();
+
         // console.log(ColisionesPared(pacman.x, pacman.y, direccion, pacman.ultimaDireccion));
         pacman.ultimaDireccion = ColisionesPared(pacman.x, pacman.y, direccion, pacman.ultimaDireccion);
-        
+        blinky.ultimaDireccion = ColisionesPared(blinky.x, blinky.y, 1, blinky.ultimaDireccion);
+
         // Interfaz de movimiento de pacman
         pacman.mover(pacman.ultimaDireccion);
-        console.log(puntuacion);
+        blinky.mover(blinky.ultimaDireccion);
+        console.log(blinky.ultimaDireccion);
+
+        // console.log(puntuacion);
         // stats.end();
         // el requestAnimation tiene que ir al final
         bucleAnimation = requestAnimationFrame(_gameLoop);

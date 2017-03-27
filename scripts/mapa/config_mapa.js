@@ -5,7 +5,8 @@ const sprites = {
     'url': {
         'mapa' : 'assets/'+ruta+'/escenario.png',
         'items' : './assets/'+ruta+'/items.png',
-        'player_pacman' : './assets/'+ruta+'/pacman.png'
+        'player_pacman' : './assets/'+ruta+'/pacman.png',
+        'fantasmas' : './assets/'+ruta+'/fantasmas.png'
     },
     'config' : {
         'width'  : 16,
