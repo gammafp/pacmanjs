@@ -7,7 +7,7 @@
 function Fantasmas(fant, ctx, tipo) {
     switch(tipo) {
         case "blinky": 
-            this.x = 209;
+            this.x = 208 // 208;
             this.y = 168;
             this.spriteX = 3;
             this.spriteY = 3;
@@ -38,7 +38,9 @@ function Fantasmas(fant, ctx, tipo) {
     let derecha = 3;
     let abajo = 4;
     let detener = 0;
-    this.ultimaDireccion = 0;
+
+    this.direccionNueva = 1;
+    this.ultimaDireccion = 4;
 
 // ## Método para el dibujado y animacion ##
     this.dibujaFantasma = function() {
@@ -60,7 +62,6 @@ function Fantasmas(fant, ctx, tipo) {
         let verticeB = [];
         let verticeC = [];
         let verticeD = [];
-        console.log(pos);
         switch(pos) {
             case izquierda: 
                 // Teletransporte por el portal
@@ -74,7 +75,7 @@ function Fantasmas(fant, ctx, tipo) {
                 if( colisiona(verticeA, verticeB) === 10 ) {
                     this.x -= 0;
                 } else {
-                    console.log("Entra");
+                    // console.log("Entra");
                     this.x -= this.speed;
                 }
 

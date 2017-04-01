@@ -15,7 +15,7 @@ var puntuacion = 0;
     const cWidth = canvas.width;
     const cHeight = canvas.height;
     // let colision = new Colisiones();
-    let direccion = 1;
+    let Direccion = 1;
 
     // Sprites
     const spritesFondo = new Image();
@@ -47,7 +47,7 @@ var puntuacion = 0;
         let codigos = e.keyCode;
         if(codigos >= 37 && codigos <= 40) {
            e.preventDefault();   
-           direccion = (codigos%4 === 0) ? 4 : codigos%4;
+           Direccion = (codigos%4 === 0) ? 4 : codigos%4;
         }
     }, false);
 
@@ -71,13 +71,16 @@ var puntuacion = 0;
         clyde.dibujaFantasma();
 
         // console.log(ColisionesPared(pacman.x, pacman.y, direccion, pacman.ultimaDireccion));
-        pacman.ultimaDireccion = ColisionesPared(pacman.x, pacman.y, direccion, pacman.ultimaDireccion);
-        blinky.ultimaDireccion = ColisionesPared(blinky.x, blinky.y, 1, blinky.ultimaDireccion);
+        pacman.ultimaDireccion = ColisionesPared(pacman.x, pacman.y, Direccion, pacman.ultimaDireccion);
+
+        blinky.ultimaDireccion = ColisionesParedFantasma(blinky.x, blinky.y, blinky.direccionNueva, blinky.ultimaDireccion);
 
         // Interfaz de movimiento de pacman
         pacman.mover(pacman.ultimaDireccion);
+
+        // Movimiento fantasma
         blinky.mover(blinky.ultimaDireccion);
-        console.log(blinky.ultimaDireccion);
+        // console.log(blinky.ultimaDireccion);
 
         // console.log(puntuacion);
         // stats.end();
