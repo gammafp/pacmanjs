@@ -72,7 +72,7 @@ function Fantasmas(fant, ctx, tipo) {
                 verticeA = [~~((this.x + 7)/16),  ~~((this.y + 31-8)/16)];
                 verticeB = [~~((this.x + 7)/16),  ~~((this.y + 8)/16)];
 
-                if( colisiona(verticeA, verticeB) === 10 ) {
+                if( colisionaF(verticeA, verticeB) === 10 ) {
                     this.x -= 0;
                 } else {
                     // console.log("Entra");
@@ -84,7 +84,7 @@ function Fantasmas(fant, ctx, tipo) {
                 verticeB = [~~((this.x + 8)/16),  ~~((this.y + 7)/16)];
                 verticeC = [~~((this.x+31-8)/16), ~~((this.y + 7)/16)];
 
-               if( colisiona(verticeB, verticeC) === 10 ) {
+               if( colisionaF(verticeB, verticeC) === 10 ) {
                     this.y -= 0;
                 } else {
                     this.y -= this.speed;
@@ -101,7 +101,7 @@ function Fantasmas(fant, ctx, tipo) {
                 verticeC = [~~((this.x+32 - 8)/16), ~~((this.y + 8)/16)];
                 verticeD = [~~((this.x+32 - 8)/16), ~~((this.y + 31-8)/16)];
          
-                if( colisiona(verticeC, verticeD) === 10 ) {
+                if( colisionaF(verticeC, verticeD) === 10 ) {
                     this.x += 0;
                 } else {
                     this.x += this.speed;
@@ -112,7 +112,7 @@ function Fantasmas(fant, ctx, tipo) {
                 verticeA = [~~((this.x + 8)/16),  ~~((this.y + 32-8)/16)];
                 verticeD = [~~((this.x + 31-8)/16), ~~((this.y + 32-8)/16)];
               
-                if( colisiona(verticeA, verticeD) === 10 ) {
+                if( colisionaF(verticeA, verticeD) === 10 ) {
                     this.y += 0;
                
                 } else {

@@ -104,7 +104,7 @@ let ColisionesParedFantasma = function(x, y, nuevaPos, ultimaPos) {
             case 1: 
                 verticeA = [~~((this.x + 7)/16),  ~~((this.y + 31-8)/16)];
                 verticeB = [~~((this.x + 7)/16),  ~~((this.y + 8)/16)];
-                colision = colisiona(verticeA, verticeB)
+                colision = colisionaF(verticeA, verticeB)
                 if( colision === 10 ) {
                     salida = (ultimaPos === nuevaPos) ? 0 : 4;
                   
@@ -116,7 +116,7 @@ let ColisionesParedFantasma = function(x, y, nuevaPos, ultimaPos) {
             case 2:
                 verticeB = [~~((this.x + 8)/16),  ~~((this.y + 7)/16)];
                 verticeC = [~~((this.x+31-8)/16), ~~((this.y + 7)/16)];
-                colision = colisiona(verticeB, verticeC);
+                colision = colisionaF(verticeB, verticeC);
                 if( colision === 10 )  {
                     salida = (ultimaPos === nuevaPos) ? 0 : ultimaPos;
                 } else if(colision === 15) {
@@ -129,7 +129,7 @@ let ColisionesParedFantasma = function(x, y, nuevaPos, ultimaPos) {
             case 3:
                 verticeC = [~~((this.x+32 - 8)/16), ~~((this.y + 8)/16)];
                 verticeD = [~~((this.x+32 - 8)/16), ~~((this.y + 31-8)/16)];
-                colision = colisiona(verticeC, verticeD);
+                colision = colisionaF(verticeC, verticeD);
                 if( colision === 10) {
                     salida = (ultimaPos === nuevaPos) ? 0 : ultimaPos;
                 } else {
@@ -140,7 +140,7 @@ let ColisionesParedFantasma = function(x, y, nuevaPos, ultimaPos) {
             case 4: 
                 verticeA = [~~((this.x + 8)/16),  ~~((this.y + 32-8)/16)];
                 verticeD = [~~((this.x + 31-8)/16), ~~((this.y + 32-8)/16)];
-                colision = colisiona(verticeA, verticeD);
+                colision = colisionaF(verticeA, verticeD);
                 if( colision === 10 ) {
                     salida = (ultimaPos === nuevaPos) ? 0 : 3;
                 } else if( colision === 15 ) {
@@ -157,7 +157,7 @@ let ColisionesParedFantasma = function(x, y, nuevaPos, ultimaPos) {
 // Código de retornos irán a partir del diez
 // 10 = está colisionando
 // 15 = está fuera del portal
-function colisiona(puntoA, puntoB) {
+function colisionaF(puntoA, puntoB) {
     let salida = 0;
     let puntA = mapa[puntoA[1]][puntoA[0]];
     let puntB = mapa[puntoB[1]][puntoB[0]];

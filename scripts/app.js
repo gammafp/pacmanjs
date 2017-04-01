@@ -16,6 +16,8 @@ var puntuacion = 0;
     const cHeight = canvas.height;
     // let colision = new Colisiones();
     let Direccion = 1;
+    
+    let punt = document.getElementById("puntuacion");
 
     // Sprites
     const spritesFondo = new Image();
@@ -82,7 +84,9 @@ var puntuacion = 0;
         blinky.mover(blinky.ultimaDireccion);
         // console.log(blinky.ultimaDireccion);
 
+        punt.innerHTML = (puntuacion * 13);
         // console.log(puntuacion);
+
         // stats.end();
         // el requestAnimation tiene que ir al final
         bucleAnimation = requestAnimationFrame(_gameLoop);
