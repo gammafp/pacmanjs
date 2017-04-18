@@ -1,7 +1,6 @@
 # pacmanjs
 
-Juego de pacman creado integramente con JavaScript
+Juego test de pacman creado integramente con JavaScript
 
 ---
-
-Versión pre-alfa.
+Unas pruebas realizadas con JavaScript para implementar colisiones y movimientos con JavaScript puro y canvas.
